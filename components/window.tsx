@@ -1,34 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { RefObject } from "react";
+import '@/styles/globals.css'
 
 export default function Window({
   title,
   onClose,
   children,
+  dragContainerRef,
 }: {
   title: string;
   onClose: () => void;
   children: React.ReactNode;
+  dragContainerRef: RefObject<HTMLElement | null>;
 }) {
   return (
     <motion.div
-      className="absolute top-20 left-20 w-[500px] h-[400px] bg-[#FFEEDB] border border-gray-300 shadow-xl z-40"
+      className="absolute items-center md:top-1/4 md:left-1/4 w-[90vw] max-w-[500px] h-[80vh] max-h-[500px] bg-[#FFEEDB] rounded-sm border border-gray-300 shadow-xl z-40"
       drag
-      dragConstraints={{ top: 0, left: 0, right: 1000, bottom: 1000 }}
-      dragElastic={0.2}
+      dragConstraints={dragContainerRef}
+      dragElastic={0.1}
       dragMomentum={false}
     >
-      <motion.div className="bg-gray-800 text-white flex justify-between items-center px-2 py-1">
-        <span>{title}</span>
+      {/* title bar */}
+      <div className="h-8 bg-[#567568] text-white flex justify-between items-center px-2 py-1 cursor-grab active:cursor-grabbing">
+        <span className="text-sm font-semibold">{title}</span>
         <button
-          className="bg-red-400 pr-2 pl-2 p-1 text-xs hover:bg-red-500 cursor-pointer"
           onClick={onClose}
+          className="cursor-pointer w-8 -mr-2 h-8 bg-red-400 hover:bg-red-500 text-xs text-white font-bold flex items-center justify-center rounded-none focus:outline-none transition-colors"
         >
           X
         </button>
-      </motion.div>
-      <div className="p-4 overflow-auto">{children}</div>
+      </div>
+      {/* window content */}
+      <div className="overflow-auto window-content">
+        <div className="p-4">{children}</div>
+      </div>
     </motion.div>
   );
 }
