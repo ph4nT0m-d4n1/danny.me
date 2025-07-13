@@ -24,6 +24,7 @@
     --primary: #567568;
     --secondary: #FFEEDB; 
     --accent: #DBD9DB;
+    --accent-warm: #A15E49;
   }
 }
 
@@ -44,5 +45,15 @@ body {
 
 .window-content {
   height: calc(100% - 2rem);
+}
+
+.desktop-content {
+  height: calc(100vh - 2.75rem);
+  margin-top: 3rem;
+}
+
+.desktop-content-mobile {
+  height: calc(100vh - 2.5rem);
+  margin-top: 3rem;
 }
 
