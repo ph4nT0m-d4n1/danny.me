@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <div className="p-4 font-mono text-black space-y-6 antialiased">
+    <div className="p-4 font-mono space-y-6 antialiased">
       {/* image + bio */}
       <div className="flex flex-col md:flex-row rounded-xl shadow-lg border border-[var(--accent-warm)] items-center md:items-start gap-6 px-3 py-5">
         {/* avatar */}
@@ -21,15 +21,15 @@ export default function About() {
         {/* name + short desc */}
         <div className="flex flex-col space-y-2 text-center md:text-left px-3 py-3">
           <h3 className="text-xl font-bold">Danny I. Mallya</h3>
-          <p className="text-gray-900 max-w-sm">
+          <p className="max-w-sm">
             Information Science & Immersive Media Design student at the University of Maryland.
           </p>
         </div>
       </div>
       {/* experience section */}
-      <div className="flex flex-col rounded-xl shadow-lg border border-[var(--accent-warm)] text-center md:text-left px-4 py-5">
+      <div className="flex flex-col rounded-xl shadow-lg border border-[var(--accent)] text-center md:text-left px-4 py-5">
         <h3 className="font-semibold text-lg underline mb-2">Projects</h3>
-        <ul className="list-image-[url(/link.svg)] list-inside space-y-1 text-sm text-gray-900 border-left">
+        <ul className="list-disc list-inside space-y-1 text-sm border-left">
           <li>
             <Link href={"https://github.com/ph4nT0m-d4n1/IMDM290_Soundscape"}>
             Soundscape {" "}
@@ -61,9 +61,9 @@ export default function About() {
         </ul>
       </div>
       {/* connections */}
-      <div className="flex flex-col rounded-xl shadow-lg border border-[var(--accent-warm)] text-center md:text-left px-4 py-5">
+      <div className="flex flex-col rounded-xl shadow-lg border border-[var(--accent)] text-center md:text-left px-4 py-5">
         <h3 className="font-semibold text-lg underline mb-2">Let's Connect!</h3>
-        <ul className="list-disc list-inside space-y-1 text-sm text-gray-900 border-left">
+        <ul className="list-disc list-inside space-y-1 text-sm border-left">
           <li>
             <Link href={"https://www.linkedin.com/in/daniel-mallya-71b928235/"}>
             LinkedIn {" "}
@@ -75,19 +75,19 @@ export default function About() {
             </Link>
           </li>
           <li>
-            <Link href={""}>
+            <Link href={"https://steamcommunity.com/id/ph4nT0md4nnyyy/"}>
             Steam {" "}
             </Link>
           </li>
         </ul>
       </div>
-      <div className="flex flex-col rounded-xl shadow-lg border border-[var(--accent-warm)] text-center md:text-left px-4 py-5">
+      <div className="flex flex-col rounded-xl shadow-lg border border-[var(--accent)] text-center md:text-left px-4 py-5">
         <h3 className="font-semibold text-lg underline mb-2">About</h3>
         <p>my portfolio site, inspired by retro desktop UIs</p>
       </div>
-      <div className="flex flex-col rounded-xl shadow-lg border border-[var(--accent-warm)] text-center md:text-left px-4 py-5">
+      <div className="flex flex-col rounded-xl shadow-lg border border-[var(--accent)] text-center md:text-left px-4 py-5">
         <h3 className="font-semibold text-lg underline mb-2">Changelog</h3>
-        <ul className="list-disc list-inside space-y-1 text-sm text-gray-900 border-left">
+        <ul className="list-disc list-inside space-y-1 text-sm border-left">
           <li>bleep and maybe bloop</li>
         </ul>
       </div>

@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, scale } from "framer-motion";
 import { RefObject } from "react";
-import '@/styles/globals.css'
+import styles from '@/styles/window.module.css'
 
 export default function Window({
   title,
@@ -17,7 +17,7 @@ export default function Window({
 }) {
   return (
     <motion.div
-      className="absolute items-center md:top-1/4 md:left-1/4 w-[90vw] max-w-[500px] h-[80vh] max-h-[400px] md:max-h-[500px] bg-[#FFEEDB] rounded-sm border border-gray-400 shadow-xl z-40"
+      className="absolute bg-[var(--primary)] items-center md:top-1/4 md:left-1/4 w-[90vw] max-w-[500px] h-[80vh] max-h-[400px] md:max-h-[500px] rounded-sm border border-gray-400 shadow-xl z-[var(--proppy)] active:z-[calc(var(--proppy)+99)] "
       layout
       initial={{opacity: 0.25, scale: 0.85}}
       transition={{type: "tween", duration:0.2}}
@@ -28,18 +28,18 @@ export default function Window({
       dragElastic={false}
       dragMomentum={false}
     >
-      {/* title bar */}
-      <div className="h-8 bg-[#567568] text-white flex justify-between items-center rounded-sm px-2 py-1 cursor-grab active:cursor-grabbing">
+      {/* title bar FFEEDB */}
+      <div className="h-8 text-[var(--foreground)] flex justify-between items-center rounded-sm px-2 py-1 cursor-grab active:cursor-grabbing">
         <span className="text-sm font-semibold">{title}</span>
         <button
           onClick={onClose}
-          className="cursor-pointer w-8 -mr-2 h-8 bg-red-400 hover:bg-red-500 text-xs text-white rounded-sm font-bold flex items-center justify-center focus:outline-none transition-colors"
+          className="cursor-pointer w-8 -mr-2 h-8 hover:bg-red-400 text-sm font-light text-[var(--background)] rounded-r-sm font-bold flex items-center justify-center focus:outline-none transition-colors"
         >
           X
         </button>
       </div>
       {/* window content */}
-      <div className="overflow-auto window-content">
+      <div className={`${styles.windowContent} overflow-auto scrollbar-thin text-[var(--background)] border-x-5 border-b-5 rounded-b-sm`}>
         <div className="p-2">{children}</div>
       </div>
     </motion.div>

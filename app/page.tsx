@@ -1,79 +1,52 @@
 "use client";
 
-import Image from "next/image";
 import { AnimatePresence } from "framer-motion";
 import { useState, useRef } from "react";
-import Navbar from "@/components/navbar";
-import DesktopIcon from "@/components/desktop-icon";
-import Window from "@/components/window";
-import About from "@/components/window-components/about";
-import Portfolio from "@/components/window-components/portfolio";
-import Settings from "@/components/window-components/settings";
-import Studio from "@/components/window-components/studio";
-import Game from "@/components/window-components/game";
 
-export default function Desktop() {
+import {
+  AboutIcon,
+  HeartIcon,
+  PortfolioIcon,
+  SettingsIcon,
+  StudioIcon,
+  TicTacIcon,
+} from "@/components/icon-library";
+
+import Navbar from "@/components/navbar";
+import Window from "@/components/window";
+import About from "@/components/window-contents/about";
+import Portfolio from "@/components/window-contents/portfolio";
+import Settings from "@/components/window-contents/settings";
+import Studio from "@/components/window-contents/studio";
+
+export default function Page() {
   const desktopRef = useRef<HTMLDivElement>(null);
 
-  const [isGameOpen, setIsGameOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isStudioOpen, setIsStudioOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
-  
 
   return (
-    <div className="flex flex-col min-h-screen font-[family-name:var(--font-geist-sans)] anti-aliased overscroll-none">
+    <div className="flex flex-col flex-wrap min-h-screen font-[family-name:var(--font-geist-sans)] overscroll-hidden">
       <Navbar />
       <div
         ref={desktopRef}
         className="relative desktop-content-mobile md:desktop-content"
       >
         {/* main content */}
-        <main className="flex flex-wrap justify-start items-start gap-x-16 gap-y-12 p-5 mt-5 ml-5">
+        <main className="flex flex-wrap justify-start items-start gap-x-16 gap-y-10 p-5 mt-10 ml-5">
           {/* left column */}
-          <div className="flex flex-col gap-[45px]">
+          <div className="flex flex-col gap-[2rem] font-mono font-semibold">
             {/* left desktop icons */}
-            <DesktopIcon
-              title="about.pdf"
-              icon={
-                <Image
-                  src="/pdf.svg"
-                  alt="pixel pdf file icon"
-                  width={500}
-                  height={500}
-                />
-              }
-              onClick={() => setIsAboutOpen(true)}
-            />
-            <DesktopIcon
-              title="portfolio"
-              icon={
-                <Image
-                  src="/portfolio.svg"
-                  alt="window icon"
-                  width={500}
-                  height={500}
-                />
-              }
-              onClick={() => setIsPortfolioOpen(true)}
-            />
-            <DesktopIcon
-              title="tictactoe.app"
-              icon={
-                <Image 
-                  src="/game.svg"
-                  alt="arcade icon"
-                  width={500}
-                  height={500}
-                  />
-              }
-              onClick={() => setIsGameOpen(true)}
-            />
+            <AboutIcon onClick={() => setIsAboutOpen(true)} />
+            <PortfolioIcon onClick={() => setIsPortfolioOpen(true)} />
+            <StudioIcon onClick={() => setIsStudioOpen(true)} />
             {/* left window functions */}
             <AnimatePresence>
               {isAboutOpen && (
                 <Window
+                  key="about"
                   title="about"
                   onClose={() => setIsAboutOpen(false)}
                   dragContainerRef={desktopRef}
@@ -81,59 +54,37 @@ export default function Desktop() {
                   <About />
                 </Window>
               )}
-
               {isPortfolioOpen && (
                 <Window
-                  title="studio"
+                  key="portfolio"
+                  title="portfolio"
                   onClose={() => setIsPortfolioOpen(false)}
                   dragContainerRef={desktopRef}
                 >
                   <Portfolio />
                 </Window>
               )}
-
-              {isGameOpen && (
+              {isStudioOpen && (
                 <Window
-                  title="tictactoe"
-                  onClose={() => setIsGameOpen(false)}
+                  key="studio"
+                  title="studio"
+                  onClose={() => setIsStudioOpen(false)}
                   dragContainerRef={desktopRef}
                 >
-                  <Game />
+                  <Studio />
                 </Window>
               )}
             </AnimatePresence>
           </div>
           {/* right column */}
-          <div className="flex flex-col gap-[45px]">
+          <div className="flex flex-col gap-[2rem] font-mono font-semibold">
             {/* right desktop icons */}
-            <DesktopIcon
-              title="settings.app"
-              icon={
-                <Image
-                  src="/settings.svg"
-                  alt="file icon"
-                  width={500}
-                  height={500}
-                />
-              }
-              onClick={() => setIsSettingsOpen(true)}
-            />
-            <DesktopIcon
-              title="studio.app"
-              icon={
-                <Image
-                  src="/studio.svg"
-                  alt="window icon"
-                  width={500}
-                  height={500}
-                />
-              }
-              onClick={() => setIsStudioOpen(true)}
-            />
+            <SettingsIcon onClick={() => setIsSettingsOpen(true)} />
             {/* right window functions */}
             <AnimatePresence>
               {isSettingsOpen && (
                 <Window
+                  key="site-preferences"
                   title="site preferences"
                   onClose={() => setIsSettingsOpen(false)}
                   dragContainerRef={desktopRef}
@@ -141,15 +92,14 @@ export default function Desktop() {
                   <Settings />
                 </Window>
               )}
-              {isStudioOpen && (
-                <Window
-                  title="portfolio"
-                  onClose={() => setIsStudioOpen(false)}
-                  dragContainerRef={desktopRef}
-                >
-                  <Studio />
-                </Window>
-              )}
+            </AnimatePresence>
+          </div>
+          <div className="flex flex-col gap-[2rem] font-mono font-semibold ml-auto">
+            {/* right desktop icons */}
+            <HeartIcon onClick={() => setIsSettingsOpen(true)} />
+            <TicTacIcon onClick={() => setIsSettingsOpen(true)} />
+            {/* right window functions */}
+            <AnimatePresence>
             </AnimatePresence>
           </div>
         </main>
