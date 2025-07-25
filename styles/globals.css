@@ -2,20 +2,45 @@
 
 :root {
     --foreground: #000e08;
-    --background: #ffeedb;
-    --primary: #1e5b4c;
-    --secondary: #e1885c;
-    --accent: #4b061d;
 
-    --border: 
+    --background: #ffeedb;
+    --bg-dark: #FBE4CE;
+    --bg-border: #EDD7BF;
+    --bg-darker: #D2AA88;
+    --bg-window: #F9D9C1;
+    --bg-saturated: #F4C8AC;
+
+    --window-border: #black;
+
+    --primary: #1e5b4c;
+    --primary-mute: #386C5E;
+    --primary-muter: #D2D0BE;
+
+    --secondary: #e1885c;
+
+    --accent: #4b061d;
+    --accent-exit: #9A1441;
   }
 
 /* [data-theme='dark'] {
     --foreground: #e8e5da;
-    --background: #262624;
+
+    --background: #30302E;
+    --bg-dark: #262624;
+    --bg-border: #353534;
+    --bg-darker: #252525;
+    --bg-window: #1E1E1E;
+    --bg-saturated: #4A4A4A;
+
     --primary: #48c0a3;
+    --primary-mute: #252525;
+
+    --window-border: #5a5a5a;
+
     --secondary: #ff9673;
+
     --accent: #fb96b8;
+    --accent-exit: #D61C5A;
 } */
 
 @theme inline {
@@ -57,10 +82,10 @@ body {
 
 .desktop-content {
   height: calc(100vh - 2.75rem);
-  margin-top: 3rem;
+  margin-top: 5rem;
 }
 
 .desktop-content-mobile {
   height: calc(100vh - 2.5rem);
-  margin-top: 3rem;
+  margin-top: 5rem;
 }

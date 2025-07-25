@@ -6,7 +6,7 @@ export function AboutIcon({ onClick }: { onClick: () => void }) {
     <DesktopIcon
       title="about.pdf"
       icon={
-        <Image src="/light/file.svg" alt="file icon" width={500} height={500} />
+        <Image src="/light/desktop/file.svg" alt="file icon" width={500} height={500} />
       }
       onClick={onClick}
     />
@@ -19,7 +19,7 @@ export function PortfolioIcon({ onClick }: { onClick: () => void }) {
       title="portfolio"
       icon={
         <Image
-          src="/light/folder.svg"
+          src="/light/desktop/folder.svg"
           alt="folder icon"
           width={500}
           height={500}
@@ -35,7 +35,7 @@ export function StudioIcon({ onClick }: { onClick: () => void }) {
     <DesktopIcon
       title="studio_"
       icon={
-        <Image src="/light/disc.svg" alt="disc icon" width={500} height={500} />
+        <Image src="/light/desktop/disc.svg" alt="disc icon" width={500} height={500} />
       }
       onClick={onClick}
     />
@@ -48,7 +48,7 @@ export function SettingsIcon({ onClick }: { onClick: () => void }) {
       title="settings"
       icon={
         <Image
-          src="/light/settings.svg"
+          src="/light/desktop/settings.svg"
           alt="settings icon"
           width={500}
           height={500}
@@ -64,7 +64,7 @@ export function HeartIcon({onClick}: {onClick: () => void}) {
     <DesktopIcon
       title="WYBMV_"
       icon={
-        <Image src="/light/heart.svg" alt="heart icon" width={500} height={500} />
+        <Image src="/light/desktop/heart.svg" alt="heart icon" width={500} height={500} />
       }
       onClick={onClick}
     />
@@ -76,7 +76,7 @@ export function TicTacIcon({onClick}: {onClick: () => void}) {
     <DesktopIcon
       title="tictactoe"
       icon={
-        <Image src="/light/hash.svg" alt="hash icon" width={500} height={500} />
+        <Image src="/light/desktop/hash.svg" alt="hash icon" width={500} height={500} />
       }
       onClick={onClick}
     />

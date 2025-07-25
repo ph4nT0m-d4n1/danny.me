@@ -14,7 +14,7 @@ import {
 
 import Navbar from "@/components/navbar";
 import Window from "@/components/window";
-import About from "@/components/window-contents/about";
+import About from "@/components/window-contents/about/about";
 import Portfolio from "@/components/window-contents/portfolio";
 import Settings from "@/components/window-contents/settings";
 import Studio from "@/components/window-contents/studio";
@@ -28,16 +28,16 @@ export default function Page() {
   const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
 
   return (
-    <div className="flex flex-col flex-wrap min-h-screen font-[family-name:var(--font-geist-sans)] overscroll-hidden">
+    <div className="flex flex-col flex-wrap min-h-screen font-[family-name:var(--font-geist-mono)] overscroll-hidden">
       <Navbar />
       <div
         ref={desktopRef}
         className="relative desktop-content-mobile md:desktop-content"
       >
         {/* main content */}
-        <main className="flex flex-wrap justify-start items-start gap-x-16 gap-y-10 p-5 mt-10 ml-5">
+        <main className="flex flex-wrap justify-start items-start gap-x-15 gap-y-10 p-5 ml-5">
           {/* left column */}
-          <div className="flex flex-col gap-[2rem] font-mono font-semibold">
+          <div className="flex flex-col gap-[2rem] font-semibold">
             {/* left desktop icons */}
             <AboutIcon onClick={() => setIsAboutOpen(true)} />
             <PortfolioIcon onClick={() => setIsPortfolioOpen(true)} />
