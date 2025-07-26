@@ -50,30 +50,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-    --text: #000e08;
-    --background: #ffeedb;
-    --primary: #1e5b4c;
-    --secondary: #e1885c;
-    --accent: #4b061d;
-
-    --border: 
-  }
-} */
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --text: #e8e5da;
-    --background: #262624;
-    --primary: #48c0a3;
-    --secondary: #ff9673;
-    --accent: #fb96b8;
-
-    --border:
-  }
-} */
-
 body {
   background: var(--background);
   color: var(--foreground);
@@ -81,11 +57,6 @@ body {
 }
 
 .desktop-content {
-  height: calc(100vh - 2.75rem);
-  margin-top: 5rem;
-}
-
-.desktop-content-mobile {
   height: calc(100vh - 2.5rem);
-  margin-top: 5rem;
+  margin-top: 2.5rem;
 }

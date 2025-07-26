@@ -28,14 +28,14 @@ export default function Page() {
   const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
 
   return (
-    <div className="flex flex-col flex-wrap min-h-screen font-[family-name:var(--font-geist-mono)] overscroll-hidden">
+    <div className="flex flex-col min-h-screen font-[family-name:var(--font-geist-mono)]">
       <Navbar />
       <div
         ref={desktopRef}
-        className="relative desktop-content-mobile md:desktop-content"
+        className="fixed w-full top-10 desktop-content"
       >
         {/* main content */}
-        <main className="flex flex-wrap justify-start items-start gap-x-15 gap-y-10 p-5 ml-5">
+        <main className="flex justify-start items-start gap-x-15 gap-y-10 mt-5 px-5">
           {/* left column */}
           <div className="flex flex-col gap-[2rem] font-semibold">
             {/* left desktop icons */}

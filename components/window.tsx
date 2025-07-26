@@ -18,8 +18,7 @@ export default function Window({
 }) {
   return (
     <motion.div
-      className="absolute bg-[var(--bg-darker)] items-center md:top-1/4 md:left-1/4 w-[90vw] max-w-[500px] h-[80vh] max-h-[400px] md:max-h-[500px] rounded-lg shadow-xl z-50] "
-      layout
+      className="fixed bg-[var(--bg-darker)] items-center md:top-1/4 md:left-1/4 w-[90vw] max-w-[500px] h-[80vh] max-h-[400px] md:max-h-[500px] rounded-lg shadow-xl]"
       initial={{ opacity: 0.25, scale: 0.85 }}
       transition={{ type: "tween", duration: 0.2 }}
       animate={{ opacity: 1, scale: 1 }}

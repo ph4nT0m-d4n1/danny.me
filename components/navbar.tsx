@@ -31,7 +31,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 h-11 md:h-20 bg-[var(--bg-dark)] text-[var(--foreground)] flex justify-between items-center px-3 md:px-6 text-xs md:text-sm shadow-sm border border-[var(--bg-border)] z-50">
+    <div className="fixed top-0 left-0 right-0 h-11 md:h-20 bg-[var(--bg-dark)] text-[var(--foreground)] flex justify-between items-center px-3 md:px-6 text-xs md:text-sm shadow-sm border border-[var(--bg-border)] z-60">
       <span className="font-bold md:text-base">D.ME</span>
       <div className="flex items-center gap-4">
         <span className="font-medium md:text-base" suppressHydrationWarning>{formatDateTime(date, is24Hour)}</span>
