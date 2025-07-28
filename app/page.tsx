@@ -27,82 +27,131 @@ export default function Page() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
 
+  //z-index management for window stacking
+  const [windowZIndex, setWindowZIndex] = useState({
+    about: 1000,
+    portfolio: 1001,
+    studio: 1002,
+    settings: 1003,
+  });
+  const [highestZIndex, setHighestZIndex] = useState(1003);
+
+  const bringWindowToFront = (windowKey: keyof typeof windowZIndex) => {
+    const newZIndex = highestZIndex + 1;
+    setWindowZIndex((prev) => ({
+      ...prev,
+      [windowKey]: newZIndex,
+    }));
+    setHighestZIndex(newZIndex);
+  };
+
   return (
     <div className="flex flex-col min-h-screen font-[family-name:var(--font-geist-mono)]">
       <Navbar />
       <div
         ref={desktopRef}
         className="fixed w-full top-10 desktop-content"
+        style={{ zIndex: 1 }}
       >
         {/* main content */}
         <main className="flex justify-start items-start gap-x-15 gap-y-10 mt-5 px-5">
           {/* left column */}
           <div className="flex flex-col gap-[2rem] font-semibold">
-            {/* left desktop icons */}
-            <AboutIcon onClick={() => setIsAboutOpen(true)} />
-            <PortfolioIcon onClick={() => setIsPortfolioOpen(true)} />
-            <StudioIcon onClick={() => setIsStudioOpen(true)} />
-            {/* left window functions */}
-            <AnimatePresence>
-              {isAboutOpen && (
-                <Window
-                  key="about"
-                  title="about"
-                  onClose={() => setIsAboutOpen(false)}
-                  dragContainerRef={desktopRef}
-                >
-                  <About />
-                </Window>
-              )}
-              {isPortfolioOpen && (
-                <Window
-                  key="portfolio"
-                  title="portfolio"
-                  onClose={() => setIsPortfolioOpen(false)}
-                  dragContainerRef={desktopRef}
-                >
-                  <Portfolio />
-                </Window>
-              )}
-              {isStudioOpen && (
-                <Window
-                  key="studio"
-                  title="studio"
-                  onClose={() => setIsStudioOpen(false)}
-                  dragContainerRef={desktopRef}
-                >
-                  <Studio />
-                </Window>
-              )}
-            </AnimatePresence>
+            <AboutIcon
+              onClick={() => {
+                setIsAboutOpen(true);
+                bringWindowToFront("about");
+              }}
+            />
+            <PortfolioIcon
+              onClick={() => {
+                setIsPortfolioOpen(true);
+                bringWindowToFront("portfolio");
+              }}
+            />
+            <StudioIcon
+              onClick={() => {
+                setIsStudioOpen(true);
+                bringWindowToFront("studio");
+              }}
+            />
           </div>
-          {/* right column */}
+          {/* middle-left column */}
           <div className="flex flex-col gap-[2rem] font-mono font-semibold">
-            {/* right desktop icons */}
-            <SettingsIcon onClick={() => setIsSettingsOpen(true)} />
-            {/* right window functions */}
-            <AnimatePresence>
-              {isSettingsOpen && (
-                <Window
-                  key="site-preferences"
-                  title="site preferences"
-                  onClose={() => setIsSettingsOpen(false)}
-                  dragContainerRef={desktopRef}
-                >
-                  <Settings />
-                </Window>
-              )}
-            </AnimatePresence>
+            <SettingsIcon
+              onClick={() => {
+                setIsSettingsOpen(true);
+                bringWindowToFront("settings");
+              }}
+            />
           </div>
           <div className="flex flex-col gap-[2rem] font-mono font-semibold ml-auto">
             {/* right desktop icons */}
-            <HeartIcon onClick={() => setIsSettingsOpen(true)} />
-            <TicTacIcon onClick={() => setIsSettingsOpen(true)} />
-            {/* right window functions */}
-            <AnimatePresence>
-            </AnimatePresence>
+            <HeartIcon
+              onClick={() => {
+                setIsSettingsOpen(true);
+                bringWindowToFront("settings");
+              }}
+            />
+            <TicTacIcon
+              onClick={() => {
+                setIsAboutOpen(true);
+                bringWindowToFront("settings");
+              }}
+            />
           </div>
         </main>
+        {/* left window functions */}
+        <AnimatePresence>
+          {isAboutOpen && (
+            <Window
+              key="about"
+              title="about"
+              onClose={() => setIsAboutOpen(false)}
+              dragContainerRef={desktopRef}
+              zIndex={windowZIndex.about}
+              focus={() => bringWindowToFront("about")}
+            >
+              <About />
+            </Window>
+          )}
+          {isPortfolioOpen && (
+            <Window
+              key="portfolio"
+              title="portfolio"
+              onClose={() => setIsPortfolioOpen(false)}
+              dragContainerRef={desktopRef}
+              zIndex={windowZIndex.portfolio}
+              focus={() => bringWindowToFront("portfolio")}
+            >
+              <Portfolio />
+            </Window>
+          )}
+          {isStudioOpen && (
+            <Window
+              key="studio"
+              title="studio"
+              onClose={() => setIsStudioOpen(false)}
+              dragContainerRef={desktopRef}
+              zIndex={windowZIndex.studio}
+              focus={() => bringWindowToFront("studio")}
+            >
+              <Studio />
+            </Window>
+          )}
+          {isSettingsOpen && (
+            <Window
+              key="site preferences"
+              title="site preferences"
+              onClose={() => setIsSettingsOpen(false)}
+              dragContainerRef={desktopRef}
+              zIndex={windowZIndex.settings}
+              focus={() => bringWindowToFront("settings")}
+            >
+              <Settings />
+            </Window>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
