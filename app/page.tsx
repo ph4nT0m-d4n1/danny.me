@@ -22,6 +22,8 @@ import Studio from "@/components/window-contents/studio";
 export default function Page() {
   const desktopRef = useRef<HTMLDivElement>(null);
 
+  const [is24Hour, set24Hour] = useState(false)
+  
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isStudioOpen, setIsStudioOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -47,7 +49,7 @@ export default function Page() {
 
   return (
     <div className="flex flex-col min-h-screen font-[family-name:var(--font-geist-mono)]">
-      <Navbar />
+      <Navbar is24Hour={is24Hour}/>
       <div
         ref={desktopRef}
         className="fixed w-full top-10 desktop-content"
@@ -148,7 +150,7 @@ export default function Page() {
               zIndex={windowZIndex.settings}
               focus={() => bringWindowToFront("settings")}
             >
-              <Settings />
+              <Settings is24Hour={is24Hour} set24Hour={set24Hour} />
             </Window>
           )}
         </AnimatePresence>
