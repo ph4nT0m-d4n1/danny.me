@@ -2,7 +2,11 @@
 
 import { useState, useEffect } from "react";
 
-export default function Navbar({ is24Hour }: { is24Hour: boolean }) {
+export default function Navbar({
+  is24Hour,
+}: {
+  is24Hour: boolean;
+}) {
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
@@ -12,19 +16,19 @@ export default function Navbar({ is24Hour }: { is24Hour: boolean }) {
     return () => clearInterval(interval);
   }, []);
 
-  const formatDateTime = (date: Date, is24Hour: boolean) => {
-    const dateSection = date.toLocaleDateString(undefined, {
+  const formatDateTime = (is24Hour: boolean) => {
+    const dateSection = Intl.DateTimeFormat(undefined, {
       year: "numeric",
       month: "long",
       day: "numeric",
-    });
+    }).format(date);
 
-    const timeSection = date.toLocaleTimeString([], {
+    const timeSection = Intl.DateTimeFormat([], {
       hour: "numeric",
       minute: "2-digit",
       second: undefined,
       hour12: !is24Hour,
-    });
+    }).format(date);
 
     return `${dateSection} · ${timeSection}`;
   };
@@ -34,12 +38,10 @@ export default function Navbar({ is24Hour }: { is24Hour: boolean }) {
       <span className="font-bold md:text-base">D.ME</span>
       <div className="flex items-center gap-4">
         <span className="font-medium md:text-base" suppressHydrationWarning>
-          {formatDateTime(date, is24Hour)}
+          {formatDateTime(is24Hour)}
         </span>
         <br></br>
-        <button
-          className="cursor-pointer rounded-lg px-4 py-2 outline-[1.5] outline-black shadow-md hover:scale-[1.08] transition-transform duration-200 ease-in-out bg-[var(--primary-mute)] text-[var(--background)]"
-        >
+        <button className="cursor-pointer rounded-lg px-4 py-2 outline-[1.5] outline-black shadow-md hover:scale-[1.08] transition-transform duration-200 ease-in-out bg-[var(--primary-mute)] text-[var(--background)]">
           {is24Hour ? "12H" : "24H"}
         </button>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import SettingCard from "./setting-card";
-import ThemeSwitch from "../theme-switch";
+import ThemeSwitch from "../../theme-switch";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import styles from "@/styles/toggle.module.css";
@@ -10,16 +10,22 @@ import clsx from "clsx";
 export default function Settings({
   is24Hour,
   set24Hour,
+  automaticTimeZone,
+  setAutomaticTimeZone,
 }: {
   is24Hour: boolean;
   set24Hour: (value: boolean) => void;
+  automaticTimeZone: boolean;
+  setAutomaticTimeZone: (value: boolean) => void;
 }) {
   const [animationOn, setAnimationOn] = useState(true);
   const toggleAnimation = () => setAnimationOn(!animationOn);
 
-  const [automaticTimeZone, setAutomaticTimeZone] = useState(true);
   const toggleAutomaticTimeZone = () =>
     setAutomaticTimeZone(!automaticTimeZone);
+
+  const toggle24hour = () =>
+    set24Hour(!is24Hour);
 
   const [eng, setEng] = useState(true);
   const toggleEng = () => setEng(!eng);
@@ -93,7 +99,7 @@ export default function Settings({
                 [styles.on]: is24Hour,
                 [styles.off]: !is24Hour,
               })}
-              onClick={() => set24Hour(!is24Hour)}
+              onClick={toggle24hour}
             >
               <motion.div
                 className={styles.toggleHandle}
